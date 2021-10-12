@@ -5,15 +5,19 @@ import me.tristanhoermann.pandaboard.repository.task.TaskModel;
 
 import java.util.LinkedList;
 
+/**
+ * Simple Stub for checking if the requests work.
+ */
+@Deprecated
 public class DatabaseStub {
 
     @Getter
     private static final LinkedList<TaskModel> tasks = new LinkedList<>();
 
     /**
-     * Adds a task to the database.
+     * Adds a task to the list.
      */
-    public static void addTask(TaskModel task){
+    public static void addTask(final TaskModel task){
         tasks.add(task);
     }
 

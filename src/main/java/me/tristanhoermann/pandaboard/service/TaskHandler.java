@@ -5,6 +5,9 @@ import me.tristanhoermann.pandaboard.repository.database.DatabaseStub;
 
 import java.util.List;
 
+/**
+ * Handles information traffic between the database and the Rest-API.
+ */
 public class TaskHandler {
 
     public static TaskModel getTaskById(int id){

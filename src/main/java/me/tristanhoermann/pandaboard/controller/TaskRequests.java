@@ -1,6 +1,5 @@
 package me.tristanhoermann.pandaboard.controller;
 
-import me.tristanhoermann.pandaboard.repository.database.DatabaseStub;
 import me.tristanhoermann.pandaboard.repository.task.TaskModel;
 import me.tristanhoermann.pandaboard.service.TaskHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,7 @@ import java.util.List;
 public class TaskRequests {
 
     @GetMapping("/getTaskById")
-    TaskModel getTaskById(@RequestParam("id") int id){
+    TaskModel getTaskById(@RequestParam("id") final int id){
         return TaskHandler.getTaskById(id);
     }
 
@@ -22,11 +21,9 @@ public class TaskRequests {
         return TaskHandler.getTasks();
     }
 
-
     @GetMapping("/createTask")
-    void createTask(@RequestParam("title") String title,
-                    @RequestParam("content") String content){
+    void createTask(@RequestParam("title") final String title,
+                    @RequestParam("content") final String content){
         TaskHandler.createTask(title, content);
     }
-
 }
