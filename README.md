@@ -1,4 +1,5 @@
 #Panda Board
+CHECKS AUF GITHUB EINRICHTEN UND TESTS SCHREIBEN
 ##Ziel des Übungs-Projektes
 Das Projekt soll ein einfaches Kanban-Board abbilden. Es ist möglich, 
 mehrere Spalten zu erstellen, in denen Karten (später Issues) mit Titel und einfachem
@@ -29,6 +30,7 @@ implementiert:
 <li>Ticket mit Inhalt und Titel bearbeiten können</li>
 <li>Zeitaufwand für ein Ticket eingeben</li>
 <li>Wöchentlich aufwendbare Zeit für das Projekt eingeben können</li>
+<li>Tasks farbig machen</li>
 </tr>
 
 
