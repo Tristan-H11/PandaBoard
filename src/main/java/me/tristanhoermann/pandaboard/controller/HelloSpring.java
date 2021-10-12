@@ -1,4 +1,4 @@
-package me.tristanhoermann.pandaboard;
+package me.tristanhoermann.pandaboard.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
