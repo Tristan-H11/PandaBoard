@@ -11,8 +11,7 @@ public class TaskConverter {
      * Converts a {@link TaskModel} to a {@link Document} for compatability with the database.
      */
     public static Document toDocument(final TaskModel task) {
-        return new Document("_id", task.getId())
-                .append("title", task.getTitle())
+        return new Document("title", task.getTitle())
                 .append("content", task.getContent());
     }
 
@@ -21,7 +20,6 @@ public class TaskConverter {
      */
     public static TaskModel toTaskModel(final Document doc) {
         return new TaskModel(
-                doc.getInteger("_id"),
                 doc.getString("title"),
                 doc.getString("content"));
     }
