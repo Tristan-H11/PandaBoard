@@ -41,7 +41,7 @@ public class TaskHandler {
                 .collect(Collectors.toList());
     }
 
-    public static boolean deleteTaskById(int id) {
+    public static boolean deleteTaskById(final int id) {
         return MongoHandler.deleteTaskById(id);
     }
 }
