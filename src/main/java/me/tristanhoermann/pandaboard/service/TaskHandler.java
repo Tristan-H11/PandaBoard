@@ -40,6 +40,4 @@ public class TaskHandler {
                 .map(TaskConverter::toTaskModel)
                 .collect(Collectors.toList());
     }
-
-
 }
