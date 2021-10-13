@@ -38,7 +38,7 @@ public class TaskHandler {
                 .collect(Collectors.toList());
     }
 
-    public static boolean deleteTaskByTitle(final String title) {
+    public static Long deleteTaskByTitle(final String title) {
         return MongoHandler.deleteTaskByTitle(title);
     }
 }
