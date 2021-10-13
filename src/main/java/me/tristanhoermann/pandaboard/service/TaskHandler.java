@@ -40,4 +40,8 @@ public class TaskHandler {
                 .map(TaskConverter::toTaskModel)
                 .collect(Collectors.toList());
     }
+
+    public static boolean deleteTaskById(final int id) {
+        return MongoHandler.deleteTaskById(id);
+    }
 }

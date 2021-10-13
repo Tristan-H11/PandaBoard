@@ -57,6 +57,14 @@ public class MongoHandler {
         return documentList;
     }
 
+    /**
+     * Finds and deletes a {@link TaskModel} in the database.
+     */
+    public static boolean deleteTaskById(final int id) {
+        final BasicDBObject field = new BasicDBObject("_id", id);
+        return collection.deleteOne(field).getDeletedCount()== 1.0;
+    }
+
     private static void openConnection() {
         mongoClient = new MongoClient(
                 new MongoClientURI("mongodb://localhost:27017")
