@@ -6,7 +6,6 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import me.tristanhoermann.pandaboard.repository.task.TaskConverter;
 import me.tristanhoermann.pandaboard.repository.task.TaskModel;
 import org.bson.Document;
@@ -61,8 +60,9 @@ public class MongoHandler {
     /**
      * Finds and deletes a {@link TaskModel} in the database.
      */
-    public static boolean deleteTaskById(int id) {
-        return collection.deleteOne(Filters.eq("_id", id)).wasAcknowledged();
+    public static boolean deleteTaskById(final int id) {
+        final BasicDBObject field = new BasicDBObject("_id", id);
+        return collection.deleteOne(field).getDeletedCount()== 1.0;
     }
 
     private static void openConnection() {
