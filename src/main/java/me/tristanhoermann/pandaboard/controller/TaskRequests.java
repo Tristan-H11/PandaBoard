@@ -14,26 +14,26 @@ import java.util.List;
 @RestController
 public class TaskRequests {
 
-    @GetMapping("/getTaskById")
-    TaskModel getTaskById(@RequestParam("id") final int id){
-        return TaskHandler.getTaskById(id);
+    @GetMapping("/getTaskByTitle")
+    TaskModel getTaskByTitle(@RequestParam("title") final String title) {
+        return TaskHandler.getTaskByTitle(title);
     }
 
     @GetMapping("/getAllTasks")
-    List<TaskModel> getAllTasks(){
+    List<TaskModel> getAllTasks() {
         return TaskHandler.getTasks();
     }
 
     @GetMapping("/createTask")
-    void createTask(@RequestParam("title") final String title,
-                    @RequestParam("content") final String content){
-        TaskHandler.createTask(title, content);
+    ResponseEntity<TaskModel> createTask(@RequestParam("title") final String title,
+                                         @RequestParam("content") final String content) {
+        return TaskHandler.createTask(title, content);
     }
 
     @DeleteMapping("/deleteTask")
-    ResponseEntity<String> deleteTask(@RequestParam("id") final int id){
-        if( TaskHandler.deleteTaskById(id)){
-            return new ResponseEntity<>("Task not found!", HttpStatus.NOT_FOUND);
+    ResponseEntity<String> deleteTask(@RequestParam("title") final String title) {
+        if (TaskHandler.deleteTaskByTitle(title) < 1.0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(HttpStatus.OK);
         }

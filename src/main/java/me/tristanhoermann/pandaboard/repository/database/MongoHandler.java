@@ -32,14 +32,15 @@ public class MongoHandler {
      * Dumps a {@link TaskModel} to the database.
      */
     public static void addTask(final TaskModel task) {
+
         collection.insertOne(TaskConverter.toDocument(task));
     }
 
     /**
      * Queries the database for a {@link TaskModel} with the given ID and returns it as a {@link Document}.
      */
-    public static Document getTaskAsDocumentById(final int id) {
-        final BasicDBObject field = new BasicDBObject("_id", id);
+    public static Document getTaskAsDocumentByTitle(final String title) {
+        final BasicDBObject field = new BasicDBObject("title", title);
         return collection.find(field).first();
     }
 
@@ -60,9 +61,9 @@ public class MongoHandler {
     /**
      * Finds and deletes a {@link TaskModel} in the database.
      */
-    public static boolean deleteTaskById(final int id) {
-        final BasicDBObject field = new BasicDBObject("_id", id);
-        return collection.deleteOne(field).getDeletedCount()== 1.0;
+    public static Long deleteTaskByTitle(final String title) {
+        final BasicDBObject field = new BasicDBObject("title", title);
+        return collection.deleteOne(field).getDeletedCount();
     }
 
     private static void openConnection() {
