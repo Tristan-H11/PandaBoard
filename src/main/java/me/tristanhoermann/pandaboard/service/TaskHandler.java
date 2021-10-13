@@ -3,6 +3,8 @@ package me.tristanhoermann.pandaboard.service;
 import me.tristanhoermann.pandaboard.repository.database.MongoHandler;
 import me.tristanhoermann.pandaboard.repository.task.TaskConverter;
 import me.tristanhoermann.pandaboard.repository.task.TaskModel;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,9 +25,13 @@ public class TaskHandler {
     /**
      * Creates a {@link TaskModel} with a given title and content.
      */
-    public static void createTask(final String title, final String content) {
-        final TaskModel task = new TaskModel(title, content);
-        MongoHandler.addTask(task);
+    public static ResponseEntity<TaskModel> createTask(final String title, final String content) {
+        if(MongoHandler.getTaskAsDocumentByTitle(title) == null) {
+            final TaskModel task = new TaskModel(title, content);
+            MongoHandler.addTask(task);
+            return new ResponseEntity<>(task, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     /**
