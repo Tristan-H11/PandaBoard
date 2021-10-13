@@ -35,7 +35,7 @@ public class TaskHandler {
      * Returns a {@link List} of {@link TaskModel}-objects from the collection in use.
      */
     public static List<TaskModel> getTasks() {
-        return MongoHandler.getAllTasks()
+        return MongoHandler.getAllTasksAsDocuments()
                 .stream()
                 .map(TaskConverter::toTaskModel)
                 .collect(Collectors.toList());

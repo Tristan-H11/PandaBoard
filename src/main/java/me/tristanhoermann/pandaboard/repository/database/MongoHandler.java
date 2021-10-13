@@ -46,7 +46,7 @@ public class MongoHandler {
     /**
      * Returns a {@link java.util.List} of {@link Document}s containing all tasks existing in the used collection.
      */
-    public static LinkedList<Document> getAllTasks() {
+    public static LinkedList<Document> getAllTasksAsDocuments() {
         final LinkedList<Document> documentList = new LinkedList<>();
 
         try (final MongoCursor<Document> cursor = collection.find().iterator()) {
