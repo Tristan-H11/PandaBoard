@@ -15,13 +15,15 @@ import java.util.List;
 public class TaskRequests {
 
     @GetMapping("/getTaskByTitle")
-    TaskModel getTaskByTitle(@RequestParam("title") final String title) {
-        return TaskHandler.getTaskByTitle(title);
+    ResponseEntity<TaskModel> getTaskByTitle(@RequestParam("title") final String title) {
+        return ResponseEntity.ok()
+                .body(TaskHandler.getTaskByTitle(title));
     }
 
     @GetMapping("/getAllTasks")
-    List<TaskModel> getAllTasks() {
-        return TaskHandler.getTasks();
+    ResponseEntity<List<TaskModel>> getAllTasks() {
+        return ResponseEntity.ok()
+                .body(TaskHandler.getTasks());
     }
 
     @GetMapping("/createTask")
