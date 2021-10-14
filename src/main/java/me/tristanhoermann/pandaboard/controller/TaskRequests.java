@@ -36,9 +36,11 @@ public class TaskRequests {
     @DeleteMapping("/deleteTask")
     ResponseEntity<String> deleteTask(@RequestParam("title") final String title) {
         if (TaskHandler.deleteTaskByTitle(title) < 1.0) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound()
+                    .build();
         } else {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return ResponseEntity.ok()
+                    .build();
         }
     }
 }
