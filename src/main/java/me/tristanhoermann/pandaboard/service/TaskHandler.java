@@ -3,8 +3,6 @@ package me.tristanhoermann.pandaboard.service;
 import me.tristanhoermann.pandaboard.repository.database.MongoHandler;
 import me.tristanhoermann.pandaboard.repository.task.TaskConverter;
 import me.tristanhoermann.pandaboard.repository.task.TaskModel;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;
