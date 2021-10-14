@@ -2,12 +2,8 @@ package me.tristanhoermann.pandaboard.controller;
 
 import me.tristanhoermann.pandaboard.repository.task.TaskModel;
 import me.tristanhoermann.pandaboard.service.TaskHandler;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,9 +24,16 @@ public class TaskRequests {
     }
 
     @GetMapping("/createTask")
-    ResponseEntity<TaskModel> createTask(@RequestParam("title") final String title,
+    ResponseEntity<Object> createTask(@RequestParam("title") final String title,
                                          @RequestParam("content") final String content) {
-        return TaskHandler.createTask(title, content);
+        final TaskModel task = TaskHandler.createTask(title, content);
+        if (task.isEmpty()) {
+            return ResponseEntity.status(419)
+                    .body("There is already a task with this title");
+        } else {
+            return ResponseEntity.ok()
+                    .body(task);
+        }
     }
 
     @DeleteMapping("/deleteTask")

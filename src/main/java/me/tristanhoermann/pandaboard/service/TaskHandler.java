@@ -25,13 +25,13 @@ public class TaskHandler {
     /**
      * Creates a {@link TaskModel} with a given title and content.
      */
-    public static ResponseEntity<TaskModel> createTask(final String title, final String content) {
+    public static TaskModel createTask(final String title, final String content) {
         if(MongoHandler.getTaskAsDocumentByTitle(title) == null) {
             final TaskModel task = new TaskModel(title, content);
             MongoHandler.addTask(task);
-            return new ResponseEntity<>(task, HttpStatus.OK);
+            return task;
         }
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+        return TaskModel.getEmptyTask();
     }
 
     /**
