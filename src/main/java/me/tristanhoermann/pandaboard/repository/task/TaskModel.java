@@ -29,7 +29,7 @@ public class TaskModel {
     /**
      * Returns an empty {@link TaskModel} with a valid ID.
      */
-    public static TaskModel getEmptyTask(){
+    public static TaskModel getEmptyTask() {
         return new TaskModel("", "");
     }
 
